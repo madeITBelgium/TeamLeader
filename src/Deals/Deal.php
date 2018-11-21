@@ -3,7 +3,7 @@
 namespace MadeITBelgium\TeamLeader\Deals;
 
 /**
- * TeamLeader Laravel PHP SDK
+ * TeamLeader Laravel PHP SDK.
  *
  * @version    1.0.0
  *
@@ -89,6 +89,7 @@ class Deal
     {
         $data['id'] = $id;
         $data['phase_id'] = $phaseId;
+
         return $this->teamleader->postCall('deals.move', [
             'body' => json_encode($data),
         ]);
@@ -100,6 +101,7 @@ class Deal
     public function win($id)
     {
         $data['id'] = $id;
+
         return $this->teamleader->postCall('deals.win', [
             'body' => json_encode($data),
         ]);
@@ -111,10 +113,10 @@ class Deal
     public function lose($id, $reason_id = null, $extra_info = null)
     {
         $data['id'] = $id;
-        if(!empty($reason_id)) {
+        if (!empty($reason_id)) {
             $data['reason_id'] = $reason_id;
         }
-        if(!empty($extra_info)) {
+        if (!empty($extra_info)) {
             $data['extra_info'] = $extra_info;
         }
 
@@ -129,6 +131,7 @@ class Deal
     public function delete($id)
     {
         $data['id'] = $id;
+
         return $this->teamleader->postCall('deals.delete', [
             'body' => json_encode($data),
         ]);
