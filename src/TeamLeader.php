@@ -37,7 +37,7 @@ class TeamLeader
     private $client;
 
     /**
-     * Construct Offrea.
+     * Construct
      *
      * @param $clientId
      * @param $clientSecret;
