@@ -1,8 +1,8 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-use MadeITBelgium\TeamLeader\TeamLeader;
 use GuzzleHttp\Client;
+use MadeITBelgium\TeamLeader\TeamLeader;
+use PHPUnit\Framework\TestCase;
 
 class TeamLeaderTest extends TestCase
 {

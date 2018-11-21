@@ -2,17 +2,16 @@
 
 namespace MadeITBelgium\TeamLeader;
 
+use Carbon\Carbon;
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use \Exception;
-use Carbon\Carbon;
-
-use  MadeITBelgium\TeamLeader\Deals\Deal;
 use  MadeITBelgium\TeamLeader\Crm\Crm;
+use  MadeITBelgium\TeamLeader\Deals\Deal;
 
 /**
- * TeamLeader Laravel PHP SDK
+ * TeamLeader Laravel PHP SDK.
  *
  * @version    1.0.0
  *
@@ -22,7 +21,6 @@ use  MadeITBelgium\TeamLeader\Crm\Crm;
  */
 class TeamLeader
 {
-    
     protected $version = '1.0.0';
     protected $apiVersion = '1.0';
     private $server = 'https://app.teamleader.eu';
@@ -37,7 +35,7 @@ class TeamLeader
     private $client;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param $clientId
      * @param $clientSecret;
@@ -46,7 +44,7 @@ class TeamLeader
     public function __construct($appUrl, $clientId, $clientSecret, $redirectUri, $client = null)
     {
         $this->server = $appUrl;
-        $this->server = "https://private-anon-ecd4ce4920-teamleadercrm.apiary-proxy.com";
+        $this->server = 'https://private-anon-ecd4ce4920-teamleadercrm.apiary-proxy.com';
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
         $this->redirectUri = $redirectUri;
@@ -56,7 +54,7 @@ class TeamLeader
                 'base_uri' => $this->server,
                 'timeout'  => 10.0,
                 'headers'  => [
-                    'User-Agent' => 'Made I.T. PHP SDK V' . $this->version,
+                    'User-Agent' => 'Made I.T. PHP SDK V'.$this->version,
                     'Accept'     => 'application/json',
                 ],
                 'verify' => true,
@@ -126,15 +124,15 @@ class TeamLeader
         return $this->clientSecret;
     }
 
-    public function setRedirectUrl($redirectUri) {
+    public function setRedirectUrl($redirectUri)
+    {
         $this->redirectUri = $redirectUri;
     }
 
-    public function getRedirectUrl($redirectUri) {
+    public function getRedirectUrl($redirectUri)
+    {
         return $this->redirectUri;
     }
-
-
 
     /**
      * Execute API call.
@@ -146,23 +144,23 @@ class TeamLeader
     private function call($requestType, $endPoint, $data = null)
     {
         $body = [];
-        if($data !== null && isset($data['multipart'])) {
+        if ($data !== null && isset($data['multipart'])) {
             $body = $data;
-        }
-        elseif($data !== null && isset($data['body'])) {
+        } elseif ($data !== null && isset($data['body'])) {
             $body = $data;
-        }
-        elseif ($data !== null) {
+        } elseif ($data !== null) {
             $body = ['form_params' => $data];
         }
 
         $headers = $this->buildHeader();
+
         try {
             $response = $this->client->request($requestType, $endPoint, $body + $headers);
         } catch (ServerException $e) {
             throw $e;
         } catch (ClientException $e) {
             \Log::info($e->getResponse()->getBody());
+
             throw $e;
             if ($e->getCode() == 400) {
                 throw new Exception($e->getResponse(), $e->getCode(), $e); //Bad reqeust
@@ -184,7 +182,7 @@ class TeamLeader
         if ($response->getStatusCode() == 200 || $response->getStatusCode() == 201 || $response->getStatusCode() == 204) {
             $body = (string) $response->getBody();
         } else {
-            throw new Exception("Invalid teamleader statuscode", $response->getStatusCode());
+            throw new Exception('Invalid teamleader statuscode', $response->getStatusCode());
         }
 
         return json_decode($body);
@@ -194,8 +192,9 @@ class TeamLeader
     {
         $headers = ['headers' => ['Content-Type' => 'application/json']];
         if (!empty($this->accessToken)) {
-            $headers['headers']['Authorization'] = 'Bearer ' . $this->accessToken;
+            $headers['headers']['Authorization'] = 'Bearer '.$this->accessToken;
         }
+
         return $headers;
     }
 
@@ -219,25 +218,27 @@ class TeamLeader
         return $this->call('DELETE', $endPoint);
     }
 
-    public function getAuthorizationUrl() {
+    public function getAuthorizationUrl()
+    {
         $query = [
-            'client_id' => $this->clientId,
+            'client_id'     => $this->clientId,
             'response_type' => 'code',
-            'redirect_uri' => $this->redirectUri,
+            'redirect_uri'  => $this->redirectUri,
         ];
-        return $this->server . "/oauth2/authorize?" . http_build_query($query);
+
+        return $this->server.'/oauth2/authorize?'.http_build_query($query);
     }
 
     public function requestAccessToken($code)
     {
-        $result = $this->postCall('/oauth2/access_token',[
+        $result = $this->postCall('/oauth2/access_token', [
             'body' => json_encode([
-                'code' => $code,
-                'client_id' => $this->clientId,
+                'code'          => $code,
+                'client_id'     => $this->clientId,
                 'client_secret' => $this->clientSecret,
-                'redirect_uri' => $this->redirectUri,
-                'grant_type' => 'authorization_code',
-            ])
+                'redirect_uri'  => $this->redirectUri,
+                'grant_type'    => 'authorization_code',
+            ]),
         ]);
 
         $this->accessToken = $result->access_token;
@@ -251,19 +252,18 @@ class TeamLeader
     {
         $result = $this->postCall('/oauth2/access_token', [
             'body' => json_encode([
-                'client_id' => $this->clientId,
+                'client_id'     => $this->clientId,
                 'client_secret' => $this->clientSecret,
-                'grant_type' => 'refresh_token',
+                'grant_type'    => 'refresh_token',
                 'refresh_token' => $this->refreshToken,
-            ])
+            ]),
         ]);
 
         $this->accessToken = $result->access_token;
         $this->expiresAt = Carbon::now()->addSeconds($result->expires_in);
         $this->refreshToken = $result->refresh_token;
 
-
-        \Log::info('New Expires at:' . $this->expiresAt->format('Y-m-d H:i:s'));
+        \Log::info('New Expires at:'.$this->expiresAt->format('Y-m-d H:i:s'));
 
         return $result;
     }
@@ -272,59 +272,53 @@ class TeamLeader
     {
         \Log::info(Carbon::now()->format('Y-m-d H:i:s'));
         \Log::info($this->expiresAt->format('Y-m-d H:i:s'));
-        
-        if(Carbon::now()->gt($this->expiresAt)) {
+
+        if (Carbon::now()->gt($this->expiresAt)) {
             \Log::info('Regenerate tokens:');
             $result = $this->regenerateAccessToken();
             \Log::info(print_r($result, true));
+
             return $result;
         }
+
         return false;
     }
 
-    
     public function general()
     {
-        return null;
     }
-    
+
     public function crm()
     {
         return new Crm($this);
     }
-    
+
     public function deals()
     {
         return new Deal($this);
     }
-    
+
     public function calendar()
     {
-        return null;
     }
-    
+
     public function invoicing()
     {
-        return null;
     }
-    
+
     public function product()
     {
-        return null;
     }
-    
+
     public function project()
     {
-        return null;
     }
-    
+
     public function timeTracking()
     {
-        return null;
     }
-    
+
     public function other()
     {
-        return null;
     }
 }

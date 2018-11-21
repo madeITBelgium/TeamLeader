@@ -3,7 +3,7 @@
 namespace MadeITBelgium\TeamLeader\Crm;
 
 /**
- * TeamLeader Laravel PHP SDK
+ * TeamLeader Laravel PHP SDK.
  *
  * @version    1.0.0
  *
@@ -45,7 +45,7 @@ class Contact
      */
     public function list($data = [])
     {
-        return $this->teamleader->getCall('contacts.list?' . http_build_query($data));
+        return $this->teamleader->getCall('contacts.list?'.http_build_query($data));
     }
 
     /**
@@ -53,13 +53,14 @@ class Contact
      */
     public function info($id)
     {
-        return $this->teamleader->getCall('contacts.info?' . http_build_query(['id' => $id]));
+        return $this->teamleader->getCall('contacts.info?'.http_build_query(['id' => $id]));
     }
 
     /**
      * Add a new contact.
      */
-    public function add($data) {
+    public function add($data)
+    {
         return $this->teamleader->postCall('contacts.add', [
             'body' => json_encode($data),
         ]);
@@ -83,6 +84,7 @@ class Contact
     public function delete($id)
     {
         $data['id'] = $id;
+
         return $this->teamleader->postCall('contacts.delete', [
             'body' => json_encode($data),
         ]);
@@ -93,7 +95,7 @@ class Contact
      */
     public function tag($id, $tags)
     {
-        if(!is_array($tags)) {
+        if (!is_array($tags)) {
             $tags = [$tags];
         }
 
@@ -109,12 +111,12 @@ class Contact
      */
     public function untag()
     {
-        if(!is_array($tags)) {
+        if (!is_array($tags)) {
             $tags = [$tags];
         }
 
         $data = ['id' => $id, 'tags' => $tags];
-        
+
         return $this->teamleader->postCall('contacts.untag', [
             'body' => json_encode($data),
         ]);
@@ -126,9 +128,9 @@ class Contact
     public function linkToCompany($id, $companyId, $position, $decisionMaker)
     {
         $data = [
-            'id' => $id,
-            'company_id' => $companyId,
-            'position' => $position,
+            'id'             => $id,
+            'company_id'     => $companyId,
+            'position'       => $position,
             'decision_maker' => $decisionMaker,
         ];
 
@@ -143,9 +145,10 @@ class Contact
     public function unlinkToCompany($id, $companyId)
     {
         $data = [
-            'id' => $id,
+            'id'         => $id,
             'company_id' => $companyId,
         ];
+
         return $this->teamleader->postCall('contacts.unlinkToCompany', [
             'body' => json_encode($data),
         ]);

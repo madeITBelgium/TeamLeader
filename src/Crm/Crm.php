@@ -2,10 +2,8 @@
 
 namespace MadeITBelgium\TeamLeader\Crm;
 
-use MadeITBelgium\TeamLeader\Crm\Contact;
-
 /**
- * TeamLeader Laravel PHP SDK
+ * TeamLeader Laravel PHP SDK.
  *
  * @version    1.0.0
  *
