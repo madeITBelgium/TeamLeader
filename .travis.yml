@@ -4,7 +4,8 @@ php:
   - '7.0'
   - '7.1'
   - '7.2'
-  - nightly
+  - '7.3'
+# - nightly
 
 before_install:
 - composer require phpunit/phpunit:5.* satooshi/php-coveralls:1.*
