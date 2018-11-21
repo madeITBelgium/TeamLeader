@@ -5,7 +5,7 @@ namespace MadeITBelgium\TeamLeader\Facade;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * TeamLeader Laravel PHP SDK
+ * TeamLeader Laravel PHP SDK.
  *
  * @version    1.0.0
  *

@@ -5,7 +5,7 @@ namespace MadeITBelgium\TeamLeader\ServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * TeamLeader Laravel PHP SDK
+ * TeamLeader Laravel PHP SDK.
  *
  * @version    1.0.0
  *
@@ -38,6 +38,7 @@ class TeamLeader extends ServiceProvider
     {
         $this->app->singleton('teamleader', function ($app) {
             $config = $app->make('config')->get('teamleader');
+
             return new \MadeITBelgium\TeamLeader\TeamLeader($config['appurl'], $config['client_id'], $config['client_secret'], $config['redirect_uri'], $config['client']);
         });
     }
