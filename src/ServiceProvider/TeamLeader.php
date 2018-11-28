@@ -39,7 +39,7 @@ class TeamLeader extends ServiceProvider
         $this->app->singleton('teamleader', function ($app) {
             $config = $app->make('config')->get('teamleader');
 
-            return new \MadeITBelgium\TeamLeader\TeamLeader($config['appurl'], $config['client_id'], $config['client_secret'], $config['redirect_uri'], $config['client']);
+            return new \MadeITBelgium\TeamLeader\TeamLeader($config['api_url'], $config['auth_url'], $config['client_id'], $config['client_secret'], $config['redirect_uri'], $config['client']);
         });
     }
 

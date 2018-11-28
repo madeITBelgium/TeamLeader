@@ -7,8 +7,9 @@ use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
-use  MadeITBelgium\TeamLeader\Crm\Crm;
-use  MadeITBelgium\TeamLeader\Deals\Deal;
+use MadeITBelgium\TeamLeader\Crm\Crm;
+use MadeITBelgium\TeamLeader\Deals\Deal;
+use MadeITBelgium\TeamLeader\Webhooks\Webhook;
 
 /**
  * TeamLeader Laravel PHP SDK.
@@ -23,7 +24,8 @@ class TeamLeader
 {
     protected $version = '1.0.0';
     protected $apiVersion = '1.0';
-    private $server = 'https://app.teamleader.eu';
+    private $apiServer = 'https://api.teamleader.eu';
+    private $authServer = 'https://app.teamleader.eu';
     private $clientId;
     private $clientSecret;
     private $accessToken;
@@ -41,27 +43,31 @@ class TeamLeader
      * @param $clientSecret;
      * @param $client
      */
-    public function __construct($appUrl, $clientId, $clientSecret, $redirectUri, $client = null)
+    public function __construct($apiUrl, $authUrl, $clientId, $clientSecret, $redirectUri, $client = null)
     {
-        $this->server = $appUrl;
-        $this->server = 'https://private-anon-ecd4ce4920-teamleadercrm.apiary-proxy.com';
+        $this->apiServer = $apiUrl;
+        $this->authServer = $authUrl;
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
         $this->redirectUri = $redirectUri;
 
         if ($client == null) {
-            $this->client = new Client([
-                'base_uri' => $this->server,
-                'timeout'  => 10.0,
-                'headers'  => [
-                    'User-Agent' => 'Made I.T. PHP SDK V'.$this->version,
-                    'Accept'     => 'application/json',
-                ],
-                'verify' => true,
-            ]);
+            $this->createClient();
         } else {
             $this->client = $client;
         }
+    }
+
+    private function createClient()
+    {
+        $this->client = new Client([
+            'timeout'  => 10.0,
+            'headers'  => [
+                'User-Agent' => 'Made I.T. PHP SDK V'.$this->version,
+                'Accept'     => 'application/json',
+            ],
+            'verify' => true,
+        ]);
     }
 
     public function setClient($client)
@@ -154,6 +160,13 @@ class TeamLeader
 
         $headers = $this->buildHeader();
 
+        if(strpos($endPoint, "oauth2") === false) {
+            $endPoint = trim($this->apiServer, '/') . '/' . ltrim($endPoint, '/');
+        }
+        else {
+            $endPoint = trim($this->authServer, '/') . '/' . ltrim($endPoint, '/');
+        }
+
         try {
             $response = $this->client->request($requestType, $endPoint, $body + $headers);
         } catch (ServerException $e) {
@@ -226,7 +239,8 @@ class TeamLeader
             'redirect_uri'  => $this->redirectUri,
         ];
 
-        return $this->server.'/oauth2/authorize?'.http_build_query($query);
+        $url = $this->authServer.'/oauth2/authorize?'.http_build_query($query);
+        return $url;
     }
 
     public function requestAccessToken($code)
@@ -263,20 +277,13 @@ class TeamLeader
         $this->expiresAt = Carbon::now()->addSeconds($result->expires_in);
         $this->refreshToken = $result->refresh_token;
 
-        \Log::info('New Expires at:'.$this->expiresAt->format('Y-m-d H:i:s'));
-
         return $result;
     }
 
     public function checkAndDoRefresh()
     {
-        \Log::info(Carbon::now()->format('Y-m-d H:i:s'));
-        \Log::info($this->expiresAt->format('Y-m-d H:i:s'));
-
         if (Carbon::now()->gt($this->expiresAt)) {
-            \Log::info('Regenerate tokens:');
             $result = $this->regenerateAccessToken();
-            \Log::info(print_r($result, true));
 
             return $result;
         }
@@ -318,7 +325,8 @@ class TeamLeader
     {
     }
 
-    public function other()
+    public function webhooks()
     {
+        return new Webhook($this);
     }
 }
