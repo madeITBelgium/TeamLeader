@@ -160,11 +160,10 @@ class TeamLeader
 
         $headers = $this->buildHeader();
 
-        if(strpos($endPoint, "oauth2") === false) {
-            $endPoint = trim($this->apiServer, '/') . '/' . ltrim($endPoint, '/');
-        }
-        else {
-            $endPoint = trim($this->authServer, '/') . '/' . ltrim($endPoint, '/');
+        if (strpos($endPoint, 'oauth2') === false) {
+            $endPoint = trim($this->apiServer, '/').'/'.ltrim($endPoint, '/');
+        } else {
+            $endPoint = trim($this->authServer, '/').'/'.ltrim($endPoint, '/');
         }
 
         try {
@@ -240,6 +239,7 @@ class TeamLeader
         ];
 
         $url = $this->authServer.'/oauth2/authorize?'.http_build_query($query);
+
         return $url;
     }
 
