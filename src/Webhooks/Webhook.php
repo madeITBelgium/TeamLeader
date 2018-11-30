@@ -65,7 +65,7 @@ class Webhook
     {
         return $this->teamleader->postCall('webhooks.unregister', [
             'body' => json_encode([
-                'url' => $url,
+                'url'   => $url,
                 'types' => $types,
             ]),
         ]);
