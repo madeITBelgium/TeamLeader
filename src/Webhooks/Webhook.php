@@ -53,7 +53,7 @@ class Webhook
      */
     public function register($data)
     {
-        return $this->teamleader->getCall('webhooks.register', [
+        return $this->teamleader->postCall('webhooks.register', [
             'body' => json_encode($data),
         ]);
     }
