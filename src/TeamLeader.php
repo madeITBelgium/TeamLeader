@@ -165,7 +165,7 @@ class TeamLeader
         } else {
             $endPoint = trim($this->authServer, '/').'/'.ltrim($endPoint, '/');
         }
-        
+
         try {
             $response = $this->client->request($requestType, $endPoint, $body + $headers);
         } catch (ServerException $e) {
