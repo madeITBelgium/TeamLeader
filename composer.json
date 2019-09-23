@@ -14,10 +14,10 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
-    "illuminate/support": "5.*",
-    "illuminate/container": "5.*",
-    "nesbot/carbon": "^1.35",
+    "php": ">=7.2",
+    "illuminate/support": "5.*|^6.0",
+    "illuminate/container": "5.*|^6.0",
+    "nesbot/carbon": "^1.35|^2.0",
     "guzzlehttp/guzzle": "^6.3"
   },
   "require-dev": {
