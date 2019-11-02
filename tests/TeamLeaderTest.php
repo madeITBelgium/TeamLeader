@@ -21,7 +21,7 @@ class TeamLeaderTest extends TestCase
             ],
             'verify' => true,
         ]);
-        $teamleader = new TeamLeader('http://localhost', 'client_id', 'client_secret', 'http://localhost', $client);
+        $teamleader = new TeamLeader('http://localhost', 'https://app.teamleader.eu', 'client_id', 'client_secret', 'http://localhost', $client);
 
         $this->assertEquals('client_id', $teamleader->getClientId());
         $this->assertEquals('client_secret', $teamleader->getClientSecret());
