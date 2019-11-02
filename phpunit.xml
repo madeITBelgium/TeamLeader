@@ -15,7 +15,7 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffeix=".php">./src</directory>
+            <directory suffix=".php">./src</directory>
             <exclude>
                 <file>src/Facade/TeamLeader.php</file>
                 <file>src/ServiceProvider/TeamLeader.php</file>
