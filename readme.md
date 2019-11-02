@@ -10,12 +10,17 @@ With this Laravel package you can create a TeamLeader integration.
 
 # Installation
 
-Require this package in your `composer.json` and update composer.
-
-```php
-"madeitbelgium/teamleader": "~0.*"
+```
+composer require madeitbelgium/teamleader
 ```
 
+Or require this package in your `composer.json` and update composer.
+
+```php
+"madeitbelgium/teamleader": "^1.0"
+```
+
+## Laravel <5.5
 After updating composer, add the ServiceProvider to the providers array in `config/app.php`
 
 ```php
