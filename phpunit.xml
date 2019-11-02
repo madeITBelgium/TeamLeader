@@ -14,11 +14,6 @@
         </testsuite>
     </testsuites>
     <filter>
-        <blacklist>
-            <file>src/Facade/TeamLeader.php</file>
-            <file>src/ServiceProvider/TeamLeader.php</file>
-            <file>src/config/teamleader.php</file>
-        </blacklist>
         <whitelist>
             <directory suffeix=".php">./src</directory>
             <exclude>
