@@ -20,6 +20,11 @@ Or require this package in your `composer.json` and update composer.
 "madeitbelgium/teamleader": "^1.0"
 ```
 
+## Publish config file
+```php
+php artisan vendor:publish --provider="MadeITBelgium\TeamLeader\ServiceProvider\TeamLeader"
+```
+
 ## Laravel <5.5
 After updating composer, add the ServiceProvider to the providers array in `config/app.php`
 
@@ -40,7 +45,6 @@ You can use the facade for shorter code. Add this to your aliases:
 use MadeITBelgium\TeamLeader\TeamLeader;
 
 $teamLeader = new TeamLeader($appUrl, $clientId, $clientSecret, $redirectUri, $client = null);
-
 ```
 
 In laravel you can use the Facade
@@ -73,9 +77,51 @@ $teamLeaderContact = TeamLeader::crm()->contact()->add([
 $contactId = $teamLeaderContact->data->id;
 ```
 
+## Authentication
+Create a redirect URL and redirect the user to the teamleader URL.
+```php
+TeamLeader::setRedirectUrl($redirect_url);
+$redirectTo = TeamLeader::getAuthorizationUrl();
+```
+
+When the user succesfully is authenticated. The user is redirect to the provided redirect URL. You can now request (and save) the access and refersh token.
+```php
+$accessTokenResult = TeamLeader::requestAccessToken($request->get('code'));
+$access_token = TeamLeader::getAccessToken();
+$refresh_token = TeamLeader::getRefreshToken();
+$expired_at = TeamLeader::getExpiresAt();
+```
+
+The access token has a short expire time. Before each reqeust check if the access token is still valid. 
+```
+TeamLeader::setAccessToken($access_token);
+TeamLeader::setRefreshToken($refresh_token);
+TeamLeader::setExpiresAt($expired_at);
+$refresh = TeamLeader::checkAndDoRefresh();
+if (false !== $refresh) {
+    $access_token = TeamLeader::getAccessToken();
+    $refresh_token = TeamLeader::getRefreshToken();
+    $expired_at = TeamLeader::getExpiresAt();
+    //Save data to database
+}
+```
+
 ## All available endpoints
 Need more endpoints? Create an issue or contact us.
 ```
+TeamLeader::setRedirectUrl($redirect_url);
+TeamLeader::getAuthorizationUrl();
+
+TeamLeader::requestAccessToken($code);
+TeamLeader::getAccessToken();
+TeamLeader::getRefreshToken();
+TeamLeader::getExpiresAt();
+
+TeamLeader::setAccessToken($access_token);
+TeamLeader::setRefreshToken($refresh_token);
+TeamLeader::setExpiresAt($expired_at);
+TeamLeader::checkAndDoRefresh();
+
 TeamLeader::crm()->contact()->list(['filter' => ..., 'page' => ..., 'sort' => ...]); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.list
 TeamLeader::crm()->contact()->info($id); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.info
 TeamLeader::crm()->contact()->add(['first_name' => ..., ...]); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.add
