@@ -93,7 +93,7 @@ $expired_at = TeamLeader::getExpiresAt();
 ```
 
 The access token has a short expire time. Before each reqeust check if the access token is still valid. 
-```
+```php
 TeamLeader::setAccessToken($access_token);
 TeamLeader::setRefreshToken($refresh_token);
 TeamLeader::setExpiresAt($expired_at);
@@ -108,7 +108,7 @@ if (false !== $refresh) {
 
 ## All available endpoints
 Need more endpoints? Create an issue or contact us.
-```
+```php
 TeamLeader::setRedirectUrl($redirect_url);
 TeamLeader::getAuthorizationUrl();
 
