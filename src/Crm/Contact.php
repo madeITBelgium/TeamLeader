@@ -109,7 +109,7 @@ class Contact
     /**
      * Remove a tag from a contact.
      */
-    public function untag()
+    public function untag($id, $tags)
     {
         if (!is_array($tags)) {
             $tags = [$tags];
