@@ -132,6 +132,14 @@ TeamLeader::crm()->contact()->untag($id, $tags); //https://developer.focus.teaml
 TeamLeader::crm()->contact()->linkToCompany($id, $companyId, $position, $decisionMaker) //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.linktocompany
 TeamLeader::crm()->contact()->unlinkToCompany($id, $companyId); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.unlinkfromcompany
 
+TeamLeader::crm()->company()->list(['filter' => ..., 'page' => ..., 'sort' => ...]); //https://developer.focus.teamleader.eu/#/reference/crm/companies/companies.list
+TeamLeader::crm()->company()->info($id); //https://developer.focus.teamleader.eu/#/reference/crm/companies/companies.info
+TeamLeader::crm()->company()->add(['first_name' => ..., ...]); //https://developer.focus.teamleader.eu/#/reference/crm/companies/companies.add
+TeamLeader::crm()->company()->update($id, ['first_name' => ...]) //https://developer.focus.teamleader.eu/#/reference/crm/companies/companies.update
+TeamLeader::crm()->company()->delete($id); //https://developer.focus.teamleader.eu/#/reference/crm/companies/companies.delete
+TeamLeader::crm()->company()->tag($id, $tags); //https://developer.focus.teamleader.eu/#/reference/crm/companies/companies.tag
+TeamLeader::crm()->company()->untag($id, $tags); //https://developer.focus.teamleader.eu/#/reference/crm/companies/companies.untag
+
 TeamLeader::deals()->list($data = []); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.list
 TeamLeader::deals()->info($id); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.info
 TeamLeader::deals()->create($data); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.create
