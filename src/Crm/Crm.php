@@ -47,7 +47,6 @@ class Crm
     {
         return new Contact($this->teamleader);
     }
-    
 
     /**
      * Get a list of companies.
