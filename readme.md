@@ -122,30 +122,30 @@ TeamLeader::setRefreshToken($refresh_token);
 TeamLeader::setExpiresAt($expired_at);
 TeamLeader::checkAndDoRefresh();
 
-TeamLeader::crm()->contact()->list(['filter' => ..., 'page' => ..., 'sort' => ...]); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.list
-TeamLeader::crm()->contact()->info($id); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.info
-TeamLeader::crm()->contact()->add(['first_name' => ..., ...]); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.add
-TeamLeader::crm()->contact()->update($id, ['first_name' => ...]) //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.update
-TeamLeader::crm()->contact()->delete($id); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.delete
-TeamLeader::crm()->contact()->tag($id, $tags); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.tag
-TeamLeader::crm()->contact()->untag($id, $tags); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.untag
-TeamLeader::crm()->contact()->linkToCompany($id, $companyId, $position, $decisionMaker) //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.linktocompany
-TeamLeader::crm()->contact()->unlinkToCompany($id, $companyId); //https://developer.teamleader.eu/#/reference/crm/contacts/contacts.unlinkfromcompany
+TeamLeader::crm()->contact()->list(['filter' => ..., 'page' => ..., 'sort' => ...]); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.list
+TeamLeader::crm()->contact()->info($id); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.info
+TeamLeader::crm()->contact()->add(['first_name' => ..., ...]); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.add
+TeamLeader::crm()->contact()->update($id, ['first_name' => ...]) //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.update
+TeamLeader::crm()->contact()->delete($id); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.delete
+TeamLeader::crm()->contact()->tag($id, $tags); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.tag
+TeamLeader::crm()->contact()->untag($id, $tags); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.untag
+TeamLeader::crm()->contact()->linkToCompany($id, $companyId, $position, $decisionMaker) //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.linktocompany
+TeamLeader::crm()->contact()->unlinkToCompany($id, $companyId); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.unlinkfromcompany
 
-TeamLeader::deals()->list($data = []); //https://developer.teamleader.eu/#/reference/deals/deals/deals.list
-TeamLeader::deals()->info($id); //https://developer.teamleader.eu/#/reference/deals/deals/deals.info
-TeamLeader::deals()->create($data); //https://developer.teamleader.eu/#/reference/deals/deals/deals.create
-TeamLeader::deals()->update($id, $data); //https://developer.teamleader.eu/#/reference/deals/deals/deals.update
-TeamLeader::deals()->move($id, $phaseId); //https://developer.teamleader.eu/#/reference/deals/deals/deals.move
-TeamLeader::deals()->win($id); //https://developer.teamleader.eu/#/reference/deals/deals/deals.win
-TeamLeader::deals()->lose($id, $reason_id = null, $extra_info = null); //https://developer.teamleader.eu/#/reference/deals/deals/deals.lose
-TeamLeader::deals()->delete($id); //https://developer.teamleader.eu/#/reference/deals/deals/deals.delete
-TeamLeader::deals()->lostReasons($data = []); //https://developer.teamleader.eu/#/reference/deals/deals/lostreasons.list
+TeamLeader::deals()->list($data = []); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.list
+TeamLeader::deals()->info($id); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.info
+TeamLeader::deals()->create($data); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.create
+TeamLeader::deals()->update($id, $data); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.update
+TeamLeader::deals()->move($id, $phaseId); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.move
+TeamLeader::deals()->win($id); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.win
+TeamLeader::deals()->lose($id, $reason_id = null, $extra_info = null); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.lose
+TeamLeader::deals()->delete($id); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.delete
+TeamLeader::deals()->lostReasons($data = []); //https://developer.focus.teamleader.eu/#/reference/deals/deals/lostreasons.list
 
 
-TeamLeader::webhooks()->list(); //https://developer.teamleader.eu/#/reference/other/webhooks/webhooks.list
-TeamLeader::webhooks()->register($data); //https://developer.teamleader.eu/#/reference/other/webhooks/webhooks.register
-TeamLeader::webhooks()->unregister($url, $types); //https://developer.teamleader.eu/#/reference/other/webhooks/webhooks.unregister
+TeamLeader::webhooks()->list(); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.list
+TeamLeader::webhooks()->register($data); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.register
+TeamLeader::webhooks()->unregister($url, $types); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.unregister
 ```
 
 The complete documentation can be found at: [http://www.madeit.be/](http://www.madeit.be/)
