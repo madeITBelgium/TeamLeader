@@ -22,10 +22,10 @@ use MadeITBelgium\TeamLeader\Webhooks\Webhook;
  */
 class TeamLeader
 {
-    protected $version = '1.0.0';
+    protected $version = '1.3.0';
     protected $apiVersion = '1.0';
-    private $apiServer = 'https://api.teamleader.eu';
-    private $authServer = 'https://app.teamleader.eu';
+    private $apiServer = 'https://api.focus.teamleader.eu';
+    private $authServer = 'https://focus.teamleader.eu';
     private $clientId;
     private $clientSecret;
     private $accessToken;
