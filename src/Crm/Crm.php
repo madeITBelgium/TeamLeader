@@ -41,10 +41,19 @@ class Crm
     }
 
     /**
-     * Get a list of deals.
+     * Get a list of contacts.
      */
     public function contact()
     {
         return new Contact($this->teamleader);
+    }
+    
+
+    /**
+     * Get a list of companies.
+     */
+    public function company()
+    {
+        return new Company($this->teamleader);
     }
 }
