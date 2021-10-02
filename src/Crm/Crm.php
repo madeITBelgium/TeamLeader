@@ -55,4 +55,29 @@ class Crm
     {
         return new Company($this->teamleader);
     }
+    
+    /**
+     * Get a list of Business Types.
+     */
+    public function businessType()
+    {
+        return new BusinessType($this->teamleader);
+    }
+    
+    /**
+     * Get a list of Tags.
+     */
+    public function tag()
+    {
+        return new Tag($this->teamleader);
+    }
+    
+    
+    /**
+     * Get a list of Tags.
+     */
+    public function address()
+    {
+        return new Address($this->teamleader);
+    }
 }
