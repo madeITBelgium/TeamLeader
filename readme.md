@@ -122,6 +122,16 @@ TeamLeader::setRefreshToken($refresh_token);
 TeamLeader::setExpiresAt($expired_at);
 TeamLeader::checkAndDoRefresh();
 
+TeamLeader::general()->department()->list()
+TeamLeader::general()->department()->info($id)
+TeamLeader::general()->user()->me()
+TeamLeader::general()->user()->list()
+TeamLeader::general()->user()->info($id)
+TeamLeader::general()->team()->list()
+TeamLeader::general()->customField()->list()
+TeamLeader::general()->customField()->info($id)
+TeamLeader::general()->workType()->list()
+
 TeamLeader::crm()->contact()->list(['filter' => ..., 'page' => ..., 'sort' => ...]); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.list
 TeamLeader::crm()->contact()->info($id); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.info
 TeamLeader::crm()->contact()->add(['first_name' => ..., ...]); //https://developer.focus.teamleader.eu/#/reference/crm/contacts/contacts.add
