@@ -9,6 +9,7 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use MadeITBelgium\TeamLeader\Crm\Crm;
 use MadeITBelgium\TeamLeader\Deals\Deal;
+use MadeITBelgium\TeamLeader\General\General;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
 
 /**
@@ -293,6 +294,7 @@ class TeamLeader
 
     public function general()
     {
+        return new General($this);
     }
 
     public function crm()
