@@ -11,6 +11,7 @@ use MadeITBelgium\TeamLeader\Crm\Crm;
 use MadeITBelgium\TeamLeader\Deals\Deal;
 use MadeITBelgium\TeamLeader\General\General;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
+use MadeITBelgium\TeamLeader\Product\Product;
 
 /**
  * TeamLeader Laravel PHP SDK.
@@ -23,7 +24,7 @@ use MadeITBelgium\TeamLeader\Webhooks\Webhook;
  */
 class TeamLeader
 {
-    protected $version = '1.3.0';
+    protected $version = '1.5.0';
     protected $apiVersion = '1.0';
     private $apiServer = 'https://api.focus.teamleader.eu';
     private $authServer = 'https://focus.teamleader.eu';
@@ -317,6 +318,7 @@ class TeamLeader
 
     public function product()
     {
+        return new Product($this);
     }
 
     public function project()
