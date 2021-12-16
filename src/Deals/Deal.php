@@ -146,4 +146,8 @@ class Deal
             'body' => json_encode($data),
         ]);
     }
+    
+    public function Quotations() {
+        return new Quotations($this->teamleader);
+    }
 }
