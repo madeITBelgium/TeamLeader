@@ -109,11 +109,11 @@ class Quotations
     /**
      * Download a quotation in a specific format.
      */
-    public function download($id, $format = "pdf")
+    public function download($id, $format = 'pdf')
     {
         $data['id'] = $id;
         $data['format'] = $format;
-        
+
         return $this->teamleader->postCall('quotations.download', [
             'body' => json_encode($data),
         ]);
