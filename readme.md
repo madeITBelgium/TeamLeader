@@ -160,6 +160,23 @@ TeamLeader::deals()->lose($id, $reason_id = null, $extra_info = null); //https:/
 TeamLeader::deals()->delete($id); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.delete
 TeamLeader::deals()->lostReasons($data = []); //https://developer.focus.teamleader.eu/#/reference/deals/deals/lostreasons.list
 
+TeamLeader::invoicing()->invoices()->list($data = [])
+TeamLeader::invoicing()->invoices()->info($id)
+TeamLeader::invoicing()->invoices()->draft($data)
+TeamLeader::invoicing()->invoices()->update($id, $data)
+TeamLeader::invoicing()->invoices()->delete($id)
+TeamLeader::invoicing()->invoices()->download($id, $format = 'pdf')
+TeamLeader::invoicing()->invoices()->copy($id)
+TeamLeader::invoicing()->invoices()->book($id, $on)
+TeamLeader::invoicing()->invoices()->registerPayment($id, $paid_at, $amount, $currency = 'EUR')
+TeamLeader::invoicing()->invoices()->credit($id, $creditNoteDate)
+
+TeamLeader::invoicing()->taxRates()->list()
+
+TeamLeader::products()->product()->categoriesList($data = [])
+TeamLeader::products()->product()->list($data = [])
+TeamLeader::products()->product()->info($id)
+TeamLeader::products()->product()->add($data)
 
 TeamLeader::webhooks()->list(); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.list
 TeamLeader::webhooks()->register($data); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.register
