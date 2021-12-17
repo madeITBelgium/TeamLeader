@@ -57,7 +57,7 @@ class Invoicing
     }
 
     /**
-     * Get a list of taxRates
+     * Get a list of taxRates.
      */
     public function taxRates()
     {
