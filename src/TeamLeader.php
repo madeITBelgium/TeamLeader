@@ -12,6 +12,7 @@ use MadeITBelgium\TeamLeader\Deals\Deal;
 use MadeITBelgium\TeamLeader\General\General;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
 use MadeITBelgium\TeamLeader\Product\Product;
+use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
 
 /**
  * TeamLeader Laravel PHP SDK.
@@ -314,6 +315,7 @@ class TeamLeader
 
     public function invoicing()
     {
+        return new Invoicing($this);
     }
 
     public function product()
