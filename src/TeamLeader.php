@@ -10,9 +10,9 @@ use GuzzleHttp\Exception\ServerException;
 use MadeITBelgium\TeamLeader\Crm\Crm;
 use MadeITBelgium\TeamLeader\Deals\Deal;
 use MadeITBelgium\TeamLeader\General\General;
-use MadeITBelgium\TeamLeader\Webhooks\Webhook;
-use MadeITBelgium\TeamLeader\Product\Product;
 use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
+use MadeITBelgium\TeamLeader\Product\Product;
+use MadeITBelgium\TeamLeader\Webhooks\Webhook;
 
 /**
  * TeamLeader Laravel PHP SDK.
