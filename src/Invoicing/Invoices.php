@@ -104,7 +104,7 @@ class Invoices
     }
 
     /**
-     * Creates a new draft invoice based on another invoice
+     * Creates a new draft invoice based on another invoice.
      */
     public function copy($id)
     {
@@ -126,7 +126,7 @@ class Invoices
             'body' => json_encode($data),
         ]);
     }
-    
+
     /**
      * Remove a tag from a invoice.
      */
@@ -145,7 +145,7 @@ class Invoices
     public function credit($id, $creditNoteDate)
     {
         $data = [
-            'id' => $id,
+            'id'               => $id,
             'credit_note_date' => $creditNoteDate,
         ];
 
