@@ -15,8 +15,8 @@
   ],
   "require": {
     "php": ">=7.2",
-    "illuminate/support": "5.*|^6.0|^7.0|8.*",
-    "illuminate/container": "5.*|^6.0|^7.0|8.*",
+    "illuminate/support": "5.*|^6.0|^7.0|8.*|9.*",
+    "illuminate/container": "5.*|^6.0|^7.0|8.*|9.*",
     "nesbot/carbon": "^1.35|^2.0",
     "guzzlehttp/guzzle": "^6.5|7.*"
   },
