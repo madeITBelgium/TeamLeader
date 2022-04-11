@@ -147,7 +147,7 @@ class Deal
         ]);
     }
 
-    public function Quotations()
+    public function quotations()
     {
         return new Quotations($this->teamleader);
     }
