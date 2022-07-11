@@ -218,7 +218,7 @@ class TeamLeader
         return $this->call('POST', $endPoint, $data);
     }
 
-    public function getCall($endPoint, $data)
+    public function getCall($endPoint, $data = null)
     {
         return $this->call('GET', $endPoint, $data);
     }
