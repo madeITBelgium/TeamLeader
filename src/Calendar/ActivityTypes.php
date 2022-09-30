@@ -8,7 +8,7 @@ namespace MadeITBelgium\TeamLeader\Calendar;
  * @copyright  Copyright (c) 2018 Made I.T. (https://www.madeit.be)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-3.txt    LGPL
  */
-class Calendar
+class ActivityTypes
 {
     private $teamleader;
 
@@ -38,18 +38,10 @@ class Calendar
     }
 
     /**
-     * Get the api for events.
+     * Get a list of Activity Types.
      */
-    public function event()
+    public function list($data = [])
     {
-        return new Event($this->teamleader);
-    }
-
-    /**
-     * Get the api for events.
-     */
-    public function activityTypes()
-    {
-        return new ActivityTypes($this->teamleader);
+        return $this->teamleader->getCall('activityTypes.list?'.http_build_query($data));
     }
 }
