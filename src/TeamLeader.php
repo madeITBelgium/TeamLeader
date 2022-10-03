@@ -2,17 +2,18 @@
 
 namespace MadeITBelgium\TeamLeader;
 
-use Carbon\Carbon;
 use Exception;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
 use MadeITBelgium\TeamLeader\Crm\Crm;
 use MadeITBelgium\TeamLeader\Deals\Deal;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use MadeITBelgium\TeamLeader\General\General;
-use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
 use MadeITBelgium\TeamLeader\Product\Product;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
+use MadeITBelgium\TeamLeader\Calendar\Calendar;
+use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
 
 /**
  * TeamLeader Laravel PHP SDK.
@@ -311,6 +312,7 @@ class TeamLeader
 
     public function calendar()
     {
+        return new Calendar($this);
     }
 
     public function invoicing()
