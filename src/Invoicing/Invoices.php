@@ -67,7 +67,7 @@ class Invoices
     }
 
     /**
-     * Update a invoice.
+     * Update an invoice.
      */
     public function update($id, $data)
     {
@@ -79,7 +79,7 @@ class Invoices
     }
 
     /**
-     * Delete a invoice.
+     * Delete an invoice.
      */
     public function delete($id)
     {

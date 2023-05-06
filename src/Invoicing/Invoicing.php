@@ -49,6 +49,14 @@ class Invoicing
     }
 
     /**
+     * Get a list of subscriptions.
+     */
+    public function subscriptions()
+    {
+        return new Subscriptions($this->teamleader);
+    }
+
+    /**
      * Get a list of creditNotes.
      */
     public function creditNotes()
