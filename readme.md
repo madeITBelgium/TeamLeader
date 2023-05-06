@@ -173,6 +173,12 @@ TeamLeader::invoicing()->invoices()->credit($id, $creditNoteDate)
 
 TeamLeader::invoicing()->taxRates()->list()
 
+TeamLeader::invoicing()->subscriptions()->list($data = [])
+TeamLeader::invoicing()->subscriptions()->info($id)
+TeamLeader::invoicing()->subscriptions()->create($data)
+TeamLeader::invoicing()->subscriptions()->update($id, $data)
+TeamLeader::invoicing()->subscriptions()->deactivate($id)
+
 TeamLeader::products()->product()->categoriesList($data = [])
 TeamLeader::products()->product()->list($data = [])
 TeamLeader::products()->product()->info($id)
