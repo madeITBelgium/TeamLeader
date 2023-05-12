@@ -17,7 +17,7 @@ composer require madeitbelgium/teamleader
 Or require this package in your `composer.json` and update composer.
 
 ```php
-"madeitbelgium/teamleader": "^1.0"
+"madeitbelgium/teamleader": "^1.8"
 ```
 
 ## Publish config file
@@ -49,6 +49,8 @@ $teamLeader = new TeamLeader($appUrl, $clientId, $clientSecret, $redirectUri, $c
 
 In laravel you can use the Facade
 ```php
+use MadeITBelgium\TeamLeader\Facade\TeamLeader;
+
 $teamLeaderContact = TeamLeader::crm()->contact()->add([
     'first_name' => 'Tjebbe',
     'last_name' => 'Lievens',
@@ -183,6 +185,13 @@ TeamLeader::products()->product()->categoriesList($data = [])
 TeamLeader::products()->product()->list($data = [])
 TeamLeader::products()->product()->info($id)
 TeamLeader::products()->product()->add($data)
+
+TeamLeader::timeTracking()->list($data = [])
+TeamLeader::timeTracking()->info($id)
+TeamLeader::timeTracking()->add($data)
+TeamLeader::timeTracking()->update($id, $data)
+TeamLeader::timeTracking()->resume($id, $data)
+TeamLeader::timeTracking()->delete($id)
 
 TeamLeader::webhooks()->list(); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.list
 TeamLeader::webhooks()->register($data); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.register
