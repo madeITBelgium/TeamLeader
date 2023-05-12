@@ -193,6 +193,15 @@ TeamLeader::timeTracking()->update($id, $data)
 TeamLeader::timeTracking()->resume($id, $data)
 TeamLeader::timeTracking()->delete($id)
 
+TeamLeader::milestones()->list($data = [])
+TeamLeader::milestones()->info($id)
+TeamLeader::milestones()->add($data)
+TeamLeader::milestones()->update($id, $data)
+TeamLeader::milestones()->delete($id)
+TeamLeader::milestones()->close($id)
+TeamLeader::milestones()->open($id)
+
+
 TeamLeader::webhooks()->list(); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.list
 TeamLeader::webhooks()->register($data); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.register
 TeamLeader::webhooks()->unregister($url, $types); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.unregister
