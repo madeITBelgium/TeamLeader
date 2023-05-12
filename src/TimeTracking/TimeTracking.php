@@ -63,7 +63,6 @@ class TimeTracking
      */
     public function add($data)
     {
-
         return $this->teamleader->postCall('timeTracking.add', [
             'body' => json_encode($data),
         ]);
