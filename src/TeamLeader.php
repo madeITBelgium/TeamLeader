@@ -13,6 +13,7 @@ use MadeITBelgium\TeamLeader\Deals\Deal;
 use MadeITBelgium\TeamLeader\General\General;
 use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
 use MadeITBelgium\TeamLeader\Product\Product;
+use MadeITBelgium\TeamLeader\Tasks\Tasks;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
 
 /**
@@ -331,6 +332,11 @@ class TeamLeader
 
     public function timeTracking()
     {
+    }
+
+    public function tasks()
+    {
+        return new Tasks($this);
     }
 
     public function webhooks()
