@@ -29,7 +29,7 @@ use MadeITBelgium\TeamLeader\Webhooks\Webhook;
  */
 class TeamLeader
 {
-    protected $version = '1.5.0';
+    protected $version = '1.10.0';
     protected $apiVersion = '1.0';
     private $apiServer = 'https://api.focus.teamleader.eu';
     private $authServer = 'https://focus.teamleader.eu';
