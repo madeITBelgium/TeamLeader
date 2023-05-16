@@ -201,6 +201,15 @@ TeamLeader::milestones()->delete($id)
 TeamLeader::milestones()->close($id)
 TeamLeader::milestones()->open($id)
 
+TeamLeader::tasks()->list($data = [])
+TeamLeader::tasks()->info($id)
+TeamLeader::tasks()->add($data)
+TeamLeader::tasks()->update($id, $data)
+TeamLeader::tasks()->delete($id)
+TeamLeader::tasks()->complete($id)
+TeamLeader::tasks()->reopen($id)
+TeamLeader::tasks()->schedule($id)
+
 
 TeamLeader::webhooks()->list(); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.list
 TeamLeader::webhooks()->register($data); //https://developer.focus.teamleader.eu/#/reference/other/webhooks/webhooks.register
