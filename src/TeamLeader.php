@@ -14,6 +14,7 @@ use MadeITBelgium\TeamLeader\General\General;
 use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
 use MadeITBelgium\TeamLeader\Milestones\Milestones;
 use MadeITBelgium\TeamLeader\Product\Product;
+use MadeITBelgium\TeamLeader\Tasks\Tasks;
 use MadeITBelgium\TeamLeader\TimeTracking\TimeTracking;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
 
@@ -339,6 +340,11 @@ class TeamLeader
     public function milestones()
     {
         return new Milestones($this);
+    }
+
+    public function tasks()
+    {
+        return new Tasks($this);
     }
 
     public function webhooks()
