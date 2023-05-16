@@ -1,8 +1,5 @@
 # PHP TeamLeader API Laravel SDK
-[![Build Status](https://travis-ci.org/madeITBelgium/TeamLeader.svg?branch=master)](https://travis-ci.org/madeITBelgium/TeamLeader)
-[![Coverage Status](https://coveralls.io/repos/github/madeITBelgium/TeamLeader/badge.svg?branch=master)](https://coveralls.io/github/madeITBelgium/TeamLeader?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/madeITBelgium/TeamLeader/v/stable.svg)](https://packagist.org/packages/madeITBelgium/TeamLeader)
-[![Latest Unstable Version](https://poser.pugx.org/madeITBelgium/TeamLeader/v/unstable.svg)](https://packagist.org/packages/madeITBelgium/TeamLeader)
 [![Total Downloads](https://poser.pugx.org/madeITBelgium/TeamLeader/d/total.svg)](https://packagist.org/packages/madeITBelgium/TeamLeader)
 [![License](https://poser.pugx.org/madeITBelgium/TeamLeader/license.svg)](https://packagist.org/packages/madeITBelgium/TeamLeader)
 
