@@ -86,6 +86,7 @@ class Product
     public function update($id, $data)
     {
         $data['id'] = $id;
+
         return $this->teamleader->postCall('products.update', [
             'body' => json_encode($data),
         ]);
