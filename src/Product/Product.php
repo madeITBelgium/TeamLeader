@@ -79,4 +79,25 @@ class Product
             'body' => json_encode($data),
         ]);
     }
+
+    /**
+     * Update a product.
+     */
+    public function update($id, $data)
+    {
+        $data['id'] = $id;
+        return $this->teamleader->postCall('products.update', [
+            'body' => json_encode($data),
+        ]);
+    }
+
+    /**
+     * Delete a product.
+     */
+    public function delete($id)
+    {
+        return $this->teamleader->postCall('products.delete', [
+            'body' => json_encode(['id' => $id]),
+        ]);
+    }
 }
