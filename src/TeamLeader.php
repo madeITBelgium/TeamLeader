@@ -14,10 +14,10 @@ use MadeITBelgium\TeamLeader\General\General;
 use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
 use MadeITBelgium\TeamLeader\Milestones\Milestones;
 use MadeITBelgium\TeamLeader\Product\Product;
+use MadeITBelgium\TeamLeader\Projects\Projects;
 use MadeITBelgium\TeamLeader\Tasks\Tasks;
 use MadeITBelgium\TeamLeader\TimeTracking\TimeTracking;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
-use MadeITBelgium\TeamLeader\Projects\Projects;
 
 /**
  * TeamLeader Laravel PHP SDK.
@@ -333,7 +333,6 @@ class TeamLeader
     {
         return new Projects($this);
     }
-    
 
     public function projectV2()
     {
