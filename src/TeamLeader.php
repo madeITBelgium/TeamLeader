@@ -17,6 +17,7 @@ use MadeITBelgium\TeamLeader\Product\Product;
 use MadeITBelgium\TeamLeader\Tasks\Tasks;
 use MadeITBelgium\TeamLeader\TimeTracking\TimeTracking;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
+use MadeITBelgium\TeamLeader\Projects\Projects;
 
 /**
  * TeamLeader Laravel PHP SDK.
@@ -330,6 +331,13 @@ class TeamLeader
 
     public function project()
     {
+        return new Projects($this);
+    }
+    
+
+    public function projectV2()
+    {
+        throw new \Exception('Not implemented yet. Create pull request');
     }
 
     public function timeTracking()
