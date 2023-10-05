@@ -124,7 +124,6 @@ class Projects
         ]);
     }
 
-
     /**
      * addParticipant to a project.
      */
