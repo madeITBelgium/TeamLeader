@@ -39,7 +39,6 @@ class CreditNotes
 
     /**
      * Get a list of credit notes.
-     *
      */
     public function list($data = [])
     {
@@ -62,14 +61,13 @@ class CreditNotes
 
     /**
      * Download a credit note in a specific format.
-     *
      */
     public function download($id, $format = 'pdf')
     {
         $data['id'] = $id;
         $data['format'] = $format;
 
-        return $this->teamleader->postCall('creditNotes.download' , [
+        return $this->teamleader->postCall('creditNotes.download', [
             'body' => json_encode($data),
         ]);
     }
