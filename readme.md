@@ -170,6 +170,10 @@ TeamLeader::invoicing()->invoices()->book($id, $on)
 TeamLeader::invoicing()->invoices()->registerPayment($id, $paid_at, $amount, $currency = 'EUR')
 TeamLeader::invoicing()->invoices()->credit($id, $creditNoteDate)
 
+TeamLeader::invoicing()->creditNotes()->list($data = [])
+TeamLeader::invoicing()->creditNotes()->info($id)
+TeamLeader::invoicing()->creditNotes()->download($id, $format = 'pdf')
+
 TeamLeader::invoicing()->taxRates()->list()
 
 TeamLeader::invoicing()->subscriptions()->list($data = [])
