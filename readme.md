@@ -182,6 +182,7 @@ TeamLeader::invoicing()->invoices()->copy($id)
 TeamLeader::invoicing()->invoices()->book($id, $on)
 TeamLeader::invoicing()->invoices()->registerPayment($id, $paid_at, $amount, $currency = 'EUR')
 TeamLeader::invoicing()->invoices()->credit($id, $creditNoteDate)
+TeamLeader::invoicing()->invoices()->creditPartially($id, $creditNoteDate, $groupedLines, $discount = [])
 
 TeamLeader::invoicing()->creditNotes()->list($data = [])
 TeamLeader::invoicing()->creditNotes()->info($id)
