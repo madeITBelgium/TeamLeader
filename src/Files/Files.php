@@ -79,9 +79,9 @@ class Files
     public function upload($name, $subject = [], $folder = 'General')
     {
         $data = [
-            'name' => $name,
+            'name'    => $name,
             'subject' => $subject,
-            'folder' => $folder,
+            'folder'  => $folder,
         ];
         return $this->teamleader->postCall('files.upload', [
             'body' => json_encode($data),

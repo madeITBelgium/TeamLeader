@@ -45,7 +45,7 @@ class Invoices
      */
     public function list($data = [])
     {
-        return $this->teamleader->getCall('invoices.list?' . http_build_query($data));
+        return $this->teamleader->getCall('invoices.list?'.http_build_query($data));
     }
 
     /**
@@ -53,7 +53,7 @@ class Invoices
      */
     public function info($id)
     {
-        return $this->teamleader->getCall('invoices.info?' . http_build_query(['id' => $id]));
+        return $this->teamleader->getCall('invoices.info?'.http_build_query(['id' => $id]));
     }
 
     /**
@@ -145,7 +145,7 @@ class Invoices
     public function credit($id, $creditNoteDate)
     {
         $data = [
-            'id' => $id,
+            'id'               => $id,
             'credit_note_date' => $creditNoteDate,
         ];
 
@@ -160,14 +160,14 @@ class Invoices
     public function creditPartially($id, $creditNoteDate, $groupedLines, $discounts = [])
     {
         $data = [
-            'id' => $id,
+            'id'               => $id,
             'credit_note_date' => $creditNoteDate,
-            'grouped_lines' => $groupedLines,
+            'grouped_lines'    => $groupedLines,
         ];
         if (!empty($discounts)) {
             $data['discounts'] = $discounts;
         }
-        
+
         return $this->teamleader->postCall('invoices.creditPartially', [
             'body' => json_encode($data),
         ]);
