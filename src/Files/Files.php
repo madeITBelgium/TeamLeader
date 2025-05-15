@@ -83,6 +83,7 @@ class Files
             'subject' => $subject,
             'folder'  => $folder,
         ];
+
         return $this->teamleader->postCall('files.upload', [
             'body' => json_encode($data),
         ]);
