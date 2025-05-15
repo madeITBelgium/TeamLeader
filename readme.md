@@ -172,6 +172,12 @@ TeamLeader::deals()->lose($id, $reason_id = null, $extra_info = null); //https:/
 TeamLeader::deals()->delete($id); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.delete
 TeamLeader::deals()->lostReasons($data = []); //https://developer.focus.teamleader.eu/#/reference/deals/deals/lostreasons.list
 
+TeamLeader::files()->list($data = [])
+TeamLeader::files()->info($id)
+TeamLeader::files()->download($id)
+TeamLeader::files()->upload($name, $subject = [], $folder = 'General')
+TeamLeader::files()->delete($id)
+
 TeamLeader::invoicing()->invoices()->list($data = [])
 TeamLeader::invoicing()->invoices()->info($id)
 TeamLeader::invoicing()->invoices()->draft($data)
@@ -211,7 +217,7 @@ TeamLeader::timeTracking()->resume($id, $data)
 TeamLeader::timeTracking()->delete($id)
 
 TeamLeader::milestones()->list($data = [])
-TeamLeader::milestones()->info($id)
+TeamLeader::milestones()->info($id)****
 TeamLeader::milestones()->add($data)
 TeamLeader::milestones()->update($id, $data)
 TeamLeader::milestones()->delete($id)
