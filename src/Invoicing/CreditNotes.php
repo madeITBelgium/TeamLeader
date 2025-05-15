@@ -54,7 +54,7 @@ class CreditNotes
     {
         $data['id'] = $id;
 
-        return $this->teamleader->postCall('invoices.info', [
+        return $this->teamleader->postCall('creditNotes.info', [
             'body' => json_encode($data),
         ]);
     }
