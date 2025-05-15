@@ -44,7 +44,7 @@ class MailTemplates
      */
     public function list($data = [])
     {
-        return $this->teamleader->getCall('mailTemplates.list', [
+        return $this->teamleader->postCall('mailTemplates.list', [
             'body' => json_encode($data),
         ]);
     }
