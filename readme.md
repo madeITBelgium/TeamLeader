@@ -217,7 +217,7 @@ TeamLeader::timeTracking()->resume($id, $data)
 TeamLeader::timeTracking()->delete($id)
 
 TeamLeader::milestones()->list($data = [])
-TeamLeader::milestones()->info($id)****
+TeamLeader::milestones()->info($id)
 TeamLeader::milestones()->add($data)
 TeamLeader::milestones()->update($id, $data)
 TeamLeader::milestones()->delete($id)
