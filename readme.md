@@ -1,4 +1,5 @@
 # PHP TeamLeader API Laravel SDK
+
 [![Latest Stable Version](https://poser.pugx.org/madeITBelgium/TeamLeader/v/stable.svg)](https://packagist.org/packages/madeITBelgium/TeamLeader)
 [![Total Downloads](https://poser.pugx.org/madeITBelgium/TeamLeader/d/total.svg)](https://packagist.org/packages/madeITBelgium/TeamLeader)
 [![License](https://poser.pugx.org/madeITBelgium/TeamLeader/license.svg)](https://packagist.org/packages/madeITBelgium/TeamLeader)
@@ -18,11 +19,13 @@ Or require this package in your `composer.json` and update composer.
 ```
 
 ## Publish config file
+
 ```php
 php artisan vendor:publish --provider="MadeITBelgium\TeamLeader\ServiceProvider\TeamLeader"
 ```
 
 ## Laravel <5.5
+
 After updating composer, add the ServiceProvider to the providers array in `config/app.php`
 
 ```php
@@ -36,7 +39,9 @@ You can use the facade for shorter code. Add this to your aliases:
 ```
 
 # Documentation
+
 ## Usage
+
 ```php
 
 use MadeITBelgium\TeamLeader\TeamLeader;
@@ -45,6 +50,7 @@ $teamLeader = new TeamLeader($appUrl, $clientId, $clientSecret, $redirectUri, $c
 ```
 
 In laravel you can use the Facade
+
 ```php
 use MadeITBelgium\TeamLeader\Facade\TeamLeader;
 
@@ -77,13 +83,17 @@ $contactId = $teamLeaderContact->data->id;
 ```
 
 ## Authentication
+
 Create a redirect URL and redirect the user to the teamleader URL.
+
 ```php
 TeamLeader::setRedirectUrl($redirect_url);
 $redirectTo = TeamLeader::getAuthorizationUrl();
 ```
 
-When the user succesfully is authenticated. The user is redirect to the provided redirect URL. You can now request (and save) the access and refersh token.
+When the user succesfully is authenticated. The user is redirect to the provided redirect URL. You can now request (and
+save) the access and refersh token.
+
 ```php
 $accessTokenResult = TeamLeader::requestAccessToken($request->get('code'));
 $access_token = TeamLeader::getAccessToken();
@@ -91,7 +101,8 @@ $refresh_token = TeamLeader::getRefreshToken();
 $expired_at = TeamLeader::getExpiresAt();
 ```
 
-The access token has a short expire time. Before each reqeust check if the access token is still valid. 
+The access token has a short expire time. Before each reqeust check if the access token is still valid.
+
 ```php
 TeamLeader::setAccessToken($access_token);
 TeamLeader::setRefreshToken($refresh_token);
@@ -106,7 +117,9 @@ if (false !== $refresh) {
 ```
 
 ## All available endpoints
+
 Need more endpoints? Create an issue or contact us.
+
 ```php
 TeamLeader::setRedirectUrl($redirect_url);
 TeamLeader::getAuthorizationUrl();
@@ -159,6 +172,12 @@ TeamLeader::deals()->lose($id, $reason_id = null, $extra_info = null); //https:/
 TeamLeader::deals()->delete($id); //https://developer.focus.teamleader.eu/#/reference/deals/deals/deals.delete
 TeamLeader::deals()->lostReasons($data = []); //https://developer.focus.teamleader.eu/#/reference/deals/deals/lostreasons.list
 
+TeamLeader::files()->list($data = [])
+TeamLeader::files()->info($id)
+TeamLeader::files()->download($id)
+TeamLeader::files()->upload($name, $subject = [], $folder = 'General')
+TeamLeader::files()->delete($id)
+
 TeamLeader::invoicing()->invoices()->list($data = [])
 TeamLeader::invoicing()->invoices()->info($id)
 TeamLeader::invoicing()->invoices()->draft($data)
@@ -169,6 +188,7 @@ TeamLeader::invoicing()->invoices()->copy($id)
 TeamLeader::invoicing()->invoices()->book($id, $on)
 TeamLeader::invoicing()->invoices()->registerPayment($id, $paid_at, $amount, $currency = 'EUR')
 TeamLeader::invoicing()->invoices()->credit($id, $creditNoteDate)
+TeamLeader::invoicing()->invoices()->creditPartially($id, $creditNoteDate, $groupedLines, $discount = [])
 
 TeamLeader::invoicing()->creditNotes()->list($data = [])
 TeamLeader::invoicing()->creditNotes()->info($id)
@@ -186,6 +206,8 @@ TeamLeader::products()->product()->categoriesList($data = [])
 TeamLeader::products()->product()->list($data = [])
 TeamLeader::products()->product()->info($id)
 TeamLeader::products()->product()->add($data)
+
+TeamLeader::mailTemplates()->list($data = [])
 
 TeamLeader::timeTracking()->list($data = [])
 TeamLeader::timeTracking()->info($id)
@@ -226,6 +248,8 @@ Support github or mail: tjebbe.lievens@madeit.be
 # Contributing
 
 Please try to follow the psr-2 coding style guide. http://www.php-fig.org/psr/psr-2/
+
 # License
 
-This package is licensed under LGPL. You are free to use it in personal and commercial projects. The code can be forked and modified, but the original copyright author should always be included!
+This package is licensed under LGPL. You are free to use it in personal and commercial projects. The code can be forked
+and modified, but the original copyright author should always be included!

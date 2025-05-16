@@ -153,4 +153,33 @@ class Invoices
             'body' => json_encode($data),
         ]);
     }
+
+    /**
+     * Credit an invoice partially.
+     */
+    public function creditPartially($id, $creditNoteDate, $groupedLines, $discounts = [])
+    {
+        $data = [
+            'id'               => $id,
+            'credit_note_date' => $creditNoteDate,
+            'grouped_lines'    => $groupedLines,
+        ];
+        if (!empty($discounts)) {
+            $data['discounts'] = $discounts;
+        }
+
+        return $this->teamleader->postCall('invoices.creditPartially', [
+            'body' => json_encode($data),
+        ]);
+    }
+
+    /**
+     * Send an invoice via e-mail.
+     */
+    public function send($body)
+    {
+        return $this->teamleader->postCall('invoices.send', [
+            'body' => json_encode($body),
+        ]);
+    }
 }
