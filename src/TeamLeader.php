@@ -305,6 +305,7 @@ class TeamLeader
     {
         return new Files($this);
     }
+
     public function general()
     {
         return new General($this);
@@ -349,6 +350,7 @@ class TeamLeader
     {
         return new MailTemplates($this);
     }
+
     public function timeTracking()
     {
         return new TimeTracking($this);
