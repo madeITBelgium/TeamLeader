@@ -10,12 +10,14 @@ use GuzzleHttp\Exception\ServerException;
 use MadeITBelgium\TeamLeader\Calendar\Calendar;
 use MadeITBelgium\TeamLeader\Crm\Crm;
 use MadeITBelgium\TeamLeader\Deals\Deal;
+use MadeITBelgium\TeamLeader\Files\Files;
 use MadeITBelgium\TeamLeader\General\General;
 use MadeITBelgium\TeamLeader\Invoicing\Invoicing;
 use MadeITBelgium\TeamLeader\Milestones\Milestones;
 use MadeITBelgium\TeamLeader\Product\Product;
 use MadeITBelgium\TeamLeader\Projects\Projects;
 use MadeITBelgium\TeamLeader\Tasks\Tasks;
+use MadeITBelgium\TeamLeader\Templates\MailTemplates;
 use MadeITBelgium\TeamLeader\TimeTracking\TimeTracking;
 use MadeITBelgium\TeamLeader\Webhooks\Webhook;
 
@@ -299,6 +301,10 @@ class TeamLeader
         return false;
     }
 
+    public function files()
+    {
+        return new Files($this);
+    }
     public function general()
     {
         return new General($this);
@@ -339,6 +345,10 @@ class TeamLeader
         throw new \Exception('Not implemented yet. Create pull request');
     }
 
+    public function templates()
+    {
+        return new MailTemplates($this);
+    }
     public function timeTracking()
     {
         return new TimeTracking($this);
